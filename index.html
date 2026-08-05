@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <h1 class="mb-5 text-center">Task Planner Familia Moreno Villamarin</h1>
+    <section class="contenedor-form-cale">
+        <section class="registrar-tarea">
+            <h2 class="text-center">Registrar Tarea</h2>
+            <form>
+                <div id="formulario">
+                    <div class="row">
+                        <label for="nombre-tarea">Nombre: </label>
+                        <label for="descripcion-tarea">Descripción: </label>
+                        <label for="categoria-tarea">Categoria: </label>
+                        <label for="fecha-entrega-tarea">Fecha Entrega: </label>
+                        <label for="prioridad-tarea">Prioridad: </label>
+                    </div>
+                    <div class="row gap-3">
+                        <input type="text" id="nombre-tarea" required>
+                        <textarea id="descripcion-tarea"></textarea>
+                        <input type="text" id="categoria-tarea" required>
+                        <input type="date" id="fecha-entrega-tarea" required>
+                        <select id="prioridad-tarea" required>
+                            <option value="" selected disabled>Seleccione una prioridad</option>
+                            <option value="alta">Alta</option>
+                            <option value="media">Media</option>
+                            <option value="baja">Baja</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="btnAgregar" type="submit">Registrar</button>
+            </form>
+        </section>
+        <section class="calendario">
+            <h2 class="text-center">Calendario</h2>
+            <div class="contenedor-calendario">
+                <p>Acá irá el calendario más adelante :D</p>
+                <!-- Aquí construiré el calendario más adelante -->
+            </div>
+        </section>
+    </section>
+    <section class="tablero-tareas">
+        <article class="estado-tareas to-do">
+            <h3>TO DO</h3>
+            <div class="lista-tareas">
+                <div class="card border-info mb-3 card-tarea" style="max-width: 18rem;">
+                    <div class="card-header">Terminar Tarea 2 Sprint 1</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Académica</h5>
+                        <p class="card-text">Finalizar la 2da tarea del 1er Sprint-TaskPlanner Generation C13</p>
+                        <a href="#" class="btn btn-primary">Actualizar </a>
+                        <a href="#" class="btn btn-primary">Eliminar</a>
+                    </div>
+                </div>
+                <div class="card border-info mb-3 card-tarea" style="max-width: 18rem;">
+                    <div class="card-header">Trabajar Proy APOD</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Académica</h5>
+                        <p class="card-text">Proyecto de imágenes astronómicas</p>
+                        <a href="#" class="btn btn-primary">Actualizar </a>
+                        <a href="#" class="btn btn-primary">Eliminar</a>
+                    </div>
+                </div>
+            </div>            
+        </article>
+        <article class="estado-tareas in-progress">
+            <h3>IN PROGRESS</h3>
+            <div class="lista-tareas">
+                <div class="card border-info mb-3 card-tarea" style="max-width: 18rem;">
+                    <div class="card-header">Terminar Tarea 2 Sprint 1</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Académica</h5>
+                        <p class="card-text">Finalizar la 2da tarea del 1er Sprint-TaskPlanner Generation C13</p>
+                        <a href="#" class="btn btn-primary">Actualizar </a>
+                        <a href="#" class="btn btn-primary">Eliminar</a>
+                    </div>
+                </div>
+                <div class="card border-info mb-3 card-tarea" style="max-width: 18rem;">
+                    <div class="card-header">Trabajar Proy APOD</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Académica</h5>
+                        <p class="card-text">Proyecto de imágenes astronómicas</p>
+                        <a href="#" class="btn btn-primary">Actualizar </a>
+                        <a href="#" class="btn btn-primary">Eliminar</a>
+                    </div>
+                </div>
+            </div> 
+        </article>
+        <article class="estado-tareas done">
+            <h3>DONE</h3>
+            <div class="lista-tareas">
+                <div class="card border-info mb-3 card-tarea" style="max-width: 18rem;">
+                    <div class="card-header">Terminar Tarea 2 Sprint 1</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Académica</h5>
+                        <p class="card-text">Finalizar la 2da tarea del 1er Sprint-TaskPlanner Generation C13</p>
+                        <a href="#" class="btn btn-primary">Actualizar </a>
+                        <a href="#" class="btn btn-primary">Eliminar</a>
+                    </div>
+                </div>
+                <div class="card border-info mb-3 card-tarea" style="max-width: 18rem;">
+                    <div class="card-header">Trabajar Proy APOD</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Académica</h5>
+                        <p class="card-text">Proyecto de imágenes astronómicas</p>
+                        <a href="#" class="btn btn-primary">Actualizar </a>
+                        <a href="#" class="btn btn-primary">Eliminar</a>
+                    </div>
+                </div>
+            </div> 
+        </article>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
