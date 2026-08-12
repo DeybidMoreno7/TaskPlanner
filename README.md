@@ -11,7 +11,7 @@ Anímate a probarlo :D.
 
 ## Figma → https://www.figma.com/design/B95Feg0CDPnPJWsHF8U0OH/TaskPlanner?node-id=0-1&t=xN7YLqpbrkDaa8sV-1
 
-
+## Deploy → https://deybidmoreno7.github.io/TaskPlanner/
 
 
 © 2026 Ing. Deybid Santiago Moreno Ruiz. Todos los derechos reservados.
