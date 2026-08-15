@@ -23,8 +23,17 @@ body{
 #formulario{
     padding: 3.5rem;
 }
+.mensaje-error{
+    display: block;
+    justify-content: flex-start;
+    min-height: 1.15rem;
+    margin-top: 0.25rem;
+    color: #b42318;
+    font-size: 0.95rem;
+}
 .campo-error {
   border-color: #b42318;
+  color: #b42318;
   box-shadow: 0 0 0 0.2rem rgba(180, 35, 24, 0.12);
 }
 .campo-valido {
