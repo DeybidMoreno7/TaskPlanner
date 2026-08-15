@@ -9,7 +9,12 @@ body{
     min-height: 100vh;
     padding: 2rem;
 }
-
+.titulo{
+    font-weight: bolder;
+}
+.subtitulo{
+    font-weight: bold;
+}
 .contenedor-form-cale article{
     border: 1px solid #000;
     border-radius: 10px;
@@ -51,8 +56,9 @@ body{
 
 .estado-tareas{
     min-height: 500px;
-    border: 1px solid #000;
+    border: 1px solid #000; 
     border-radius: 10px;
+    padding-top: 2rem;
 }
 
 .estado-tareas h3{

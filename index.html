@@ -12,37 +12,44 @@
 </head>
 
 <body>
-    <h1 class="mb-5 text-center">Task Planner Familia Moreno Villamarin</h1>
+    <h1 class="mb-5 text-center titulo">Task Planner Familia Moreno Villamarin</h1>
     <section class="contenedor-form-cale row">
         <article class="registrar-tarea col-12 col-md-6">
-            <h2 class="text-center mt-5">Registrar Tarea</h2>
+            <h2 class="text-center mt-5 titulo">Registrar Tarea</h2>
             <form id="formulario" class="container text-center d-flex flex-column gap-3">
                 <div class="row">
-                    <label for="nombre-tarea" class="col-sm-3 col-form-label col-form-label-lg ">Nombre:</label>
+                    <label for="nombre-tarea" class="col-sm-3 col-form-label col-form-label-lg subtitulo">Nombre:</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control form-control-lg" id="nombre-tarea" placeholder="¿Qué nombre tendrá la tarea?">
                     </div>
                 </div>
                 <div class="row">
-                    <label for="descripcion-tarea" class="col-sm-3 col-form-label col-form-label-lg">Descripción: </label>
+                    <label for="descripcion-tarea" class="col-sm-3 col-form-label col-form-label-lg subtitulo">Descripción: </label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control form-control-lg" id="descripcion-tarea" placeholder="Escribe los detalles..." >
                     </div>
                 </div>
                 <div class="row">
-                    <label for="categoria-tarea" class="col-sm-3 col-form-label col-form-label-lg">Categoría: </label>
+                    <label for="categoria-tarea" class="col-sm-3 col-form-label col-form-label-lg subtitulo">Categoría: </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-lg" id="categoria-tarea" placeholder="Clasifícala..." >
+                        <select id="categoria-tarea" class="form-select" placeholder="Clasifícala...">
+                            <option value="" selected disabled>Seleccione una categoría</option>
+                            <option value="hogar">Hogar</option>
+                            <option value="academica">Académica</option>
+                            <option value="profesional">Laboral</option>
+                            <option value="profesional">Personal</option>
+                            <option value="profesional">Familiar</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row">
-                    <label for="fecha-entrega-tarea" class="col-sm-3 col-form-label col-form-label-lg">Fecha Entrega: </label>
+                    <label for="fecha-entrega-tarea" class="col-sm-3 col-form-label col-form-label-lg subtitulo">Fecha Entrega: </label>
                     <div class="col-sm-9">
                         <input type="date" class="form-control form-control-lg" id="fecha-entrega-tarea" placeholder="Clasifícala..." >
                     </div>
                 </div>
                 <div class="row">
-                    <label for="prioridad-tarea" class="col-sm-3 col-form-label col-form-label-lg">Prioridad: </label>
+                    <label for="prioridad-tarea" class="col-sm-3 col-form-label col-form-label-lg subtitulo">Prioridad: </label>
                     <div class="col-sm-9">
                         <select id="prioridad-tarea" class="form-select" >
                             <option value="" selected disabled>Seleccione una prioridad</option>
@@ -56,7 +63,7 @@
             </form>
         </article>
         <article class="calendario col-12 col-md-6">
-            <h2 class="text-center mt-5">Calendario</h2>
+            <h2 class="text-center mt-5 titulo">Calendario</h2>
             <div class="contenedor-calendario">
                 <p>Acá irá el calendario más adelante :D</p>
                 <!-- Aquí construiré el calendario más adelante -->
@@ -65,7 +72,7 @@
     </section>
     <section class="tablero-tareas row g-4">
         <article class="estado-tareas to-do col-12 col-md-4">
-            <h3>TO DO</h3>
+            <h3 class="titulo">TO DO</h3>
             <div class="lista-tareas">
                 <div class="card border-info mb-3 card-tarea" style="max-width: 18rem;">
                     <div class="card-header">Terminar Tarea 2 Sprint 1</div>
@@ -90,7 +97,7 @@
             </div>
         </article>
         <article class="estado-tareas in-progress col-12 col-md-4">
-            <h3>IN PROGRESS</h3>
+            <h3 class="titulo">IN PROGRESS</h3>
             <div class="lista-tareas">
                 <div class="card border-info mb-3 card-tarea" style="max-width: 18rem;">
                     <div class="card-header">Terminar Tarea 2 Sprint 1</div>
@@ -115,7 +122,7 @@
             </div>
         </article>
         <article class="estado-tareas done col-12 col-md-4">
-            <h3>DONE</h3>
+            <h3 class="titulo">DONE</h3>
             <div class="lista-tareas">
                 <div class="card border-info mb-3 card-tarea" style="max-width: 18rem;">
                     <div class="card-header">Terminar Tarea 2 Sprint 1</div>
@@ -144,6 +151,7 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
     <script src="./js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

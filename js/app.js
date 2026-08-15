@@ -6,12 +6,13 @@ const fecha_entrega_tarea = document.getElementById("fecha-entrega-tarea");
 const prioridad_tarea = document.getElementById("prioridad-tarea");
 
 
-function mostrarError(input, mensaje){
+function mostrarError(input, mensaje) {
+    formularioValido = false;
     input.classList.add("is-invalid");
     input.classList.remove("is-valid");
 
     let feedback = input.parentNode.querySelector(".invalid-feedback");
-    if(!feedback){
+    if (!feedback) {
         feedback = document.createElement("div");
         feedback.classList.add("invalid-feedback");
         input.parentNode.appendChild(feedback);
@@ -44,20 +45,16 @@ form.addEventListener("submit", (e) => {
             nombre_tarea,
             "¡Upsss, este campo no puede estar vacío 😬!"
         );
-
-        formularioValido = false;
     } else if (nombre.length < 5) {
         mostrarError(
             nombre_tarea,
             "El nombre debe tener al menos 5 caracteres."
         );
-        formularioValido = false;
     } else if (nombre.length > 50) {
         mostrarError(
             nombre_tarea,
             "El nombre no puede superar los 50 caracteres."
         );
-        formularioValido = false;
     } else {
         mostrarValido(nombre_tarea);
     }
@@ -70,13 +67,11 @@ form.addEventListener("submit", (e) => {
             descripcion_tarea,
             "Come on, dale una descripción breve 😢"
         );
-        formularioValido = false;
     } else if (descripcion.length < 6) {
         mostrarError(
             descripcion_tarea,
             "La descripción debe tener al menos 6 caracteres."
         );
-        formularioValido = false;
     } else {
         mostrarValido(descripcion_tarea);
     }
@@ -89,13 +84,6 @@ form.addEventListener("submit", (e) => {
             categoria_tarea,
             "Seguro querrás categorizarla 🙄"
         );
-        formularioValido = false;
-    } else if (categoria.length < 3) {
-        mostrarError(
-            categoria_tarea,
-            "La categoría debe tener al menos 3 caracteres."
-        );
-        formularioValido = false;
     } else {
         mostrarValido(categoria_tarea);
     }
@@ -108,7 +96,6 @@ form.addEventListener("submit", (e) => {
             fecha_entrega_tarea,
             "¿Y la fecha de entrega? 💀"
         );
-        formularioValido = false;
     } else {
         // Fecha actual sin tener en cuenta la hora
         const hoy = new Date();
@@ -120,7 +107,6 @@ form.addEventListener("submit", (e) => {
                 fecha_entrega_tarea,
                 "La fecha de entrega debe ser posterior a hoy."
             );
-            formularioValido = false;
         } else {
             mostrarValido(fecha_entrega_tarea);
         }
@@ -131,13 +117,40 @@ form.addEventListener("submit", (e) => {
             prioridad_tarea,
             "Esto te servirá para administrar mejor tu tiempo 🏃🏽‍♂️🏃🏻‍♀️"
         );
-        formularioValido = false;
     } else {
         mostrarValido(prioridad_tarea);
     }
     // RESULTADO FINAL
     if (formularioValido) {
-        alert("Biennn");
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) swalWithBootstrapButtons.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+            });
+            else if (result.dismiss === Swal.DismissReason.cancel)
+                /* Read more about handling dismissals below */
+                swalWithBootstrapButtons.fire({
+                    title: "Cancelled",
+                    text: "Your imaginary file is safe :)",
+                    icon: "error"
+                });
+        });
     }
 });
 
