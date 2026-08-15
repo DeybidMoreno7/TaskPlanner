@@ -21,12 +21,14 @@
                     <label for="nombre-tarea" class="col-sm-3 col-form-label col-form-label-lg subtitulo">Nombre:</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control form-control-lg" id="nombre-tarea" placeholder="¿Qué nombre tendrá la tarea?">
+                        <small class="mensaje-error" id="errorNombre-tarea" aria-live="polite"></small>
                     </div>
                 </div>
                 <div class="row">
                     <label for="descripcion-tarea" class="col-sm-3 col-form-label col-form-label-lg subtitulo">Descripción: </label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control form-control-lg" id="descripcion-tarea" placeholder="Escribe los detalles..." >
+                        <small class="mensaje-error" id="errorDescripcion-tarea" aria-live="polite"></small>
                     </div>
                 </div>
                 <div class="row">
@@ -40,12 +42,14 @@
                             <option value="profesional">Personal</option>
                             <option value="profesional">Familiar</option>
                         </select>
+                        <small class="mensaje-error" id="errorCategoria-tarea" aria-live="polite"></small>
                     </div>
                 </div>
                 <div class="row">
                     <label for="fecha-entrega-tarea" class="col-sm-3 col-form-label col-form-label-lg subtitulo">Fecha Entrega: </label>
                     <div class="col-sm-9">
                         <input type="date" class="form-control form-control-lg" id="fecha-entrega-tarea" placeholder="Clasifícala..." >
+                        <small class="mensaje-error" id="errorFecha-entrega-tarea" aria-live="polite"></small>
                     </div>
                 </div>
                 <div class="row">
@@ -57,6 +61,7 @@
                             <option value="media">Media</option>
                             <option value="baja">Baja</option>
                         </select>
+                        <small class="mensaje-error" id="errorPrioridad-tarea" aria-live="polite"></small>
                     </div>
                 </div>
                 <button id="btnAgregar" type="submit">Registrar</button>

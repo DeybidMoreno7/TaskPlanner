@@ -23,7 +23,13 @@ body{
 #formulario{
     padding: 3.5rem;
 }
-
+.campo-error {
+  border-color: #b42318;
+  box-shadow: 0 0 0 0.2rem rgba(180, 35, 24, 0.12);
+}
+.campo-valido {
+  border-color: #5bbe49;
+}
 #btnAgregar {
     display: block;
     margin: 1.5rem auto 0;
