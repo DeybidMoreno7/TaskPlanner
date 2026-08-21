@@ -18,21 +18,26 @@
             <h2 class="text-center mt-5 titulo">Registrar Tarea</h2>
             <form id="formulario" class="container text-center d-flex flex-column gap-3">
                 <div class="row">
-                    <label for="nombre-tarea" class="col-sm-3 col-form-label col-form-label-lg subtitulo">Nombre:</label>
+                    <label for="nombre-tarea"
+                        class="col-sm-3 col-form-label col-form-label-lg subtitulo">Nombre:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-lg" id="nombre-tarea" placeholder="¿Qué nombre tendrá la tarea?">
+                        <input type="text" class="form-control form-control-lg" id="nombre-tarea"
+                            placeholder="¿Qué nombre tendrá la tarea?">
                         <small class="mensaje-error" id="errorNombre-tarea" aria-live="polite"></small>
                     </div>
                 </div>
                 <div class="row">
-                    <label for="descripcion-tarea" class="col-sm-3 col-form-label col-form-label-lg subtitulo">Descripción: </label>
+                    <label for="descripcion-tarea"
+                        class="col-sm-3 col-form-label col-form-label-lg subtitulo">Descripción: </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-lg" id="descripcion-tarea" placeholder="Escribe los detalles..." >
+                        <input type="text" class="form-control form-control-lg" id="descripcion-tarea"
+                            placeholder="Escribe los detalles...">
                         <small class="mensaje-error" id="errorDescripcion-tarea" aria-live="polite"></small>
                     </div>
                 </div>
                 <div class="row">
-                    <label for="categoria-tarea" class="col-sm-3 col-form-label col-form-label-lg subtitulo">Categoría: </label>
+                    <label for="categoria-tarea" class="col-sm-3 col-form-label col-form-label-lg subtitulo">Categoría:
+                    </label>
                     <div class="col-sm-9">
                         <select id="categoria-tarea" class="form-select" placeholder="Clasifícala...">
                             <option value="" selected disabled>Seleccione una categoría</option>
@@ -46,16 +51,19 @@
                     </div>
                 </div>
                 <div class="row">
-                    <label for="fecha-entrega-tarea" class="col-sm-3 col-form-label col-form-label-lg subtitulo">Fecha Entrega: </label>
+                    <label for="fecha-entrega-tarea" class="col-sm-3 col-form-label col-form-label-lg subtitulo">Fecha
+                        Entrega: </label>
                     <div class="col-sm-9">
-                        <input type="date" class="form-control form-control-lg" id="fecha-entrega-tarea" placeholder="Clasifícala..." >
+                        <input type="date" class="form-control form-control-lg" id="fecha-entrega-tarea"
+                            placeholder="Clasifícala...">
                         <small class="mensaje-error" id="errorFecha-entrega-tarea" aria-live="polite"></small>
                     </div>
                 </div>
                 <div class="row">
-                    <label for="prioridad-tarea" class="col-sm-3 col-form-label col-form-label-lg subtitulo">Prioridad: </label>
+                    <label for="prioridad-tarea" class="col-sm-3 col-form-label col-form-label-lg subtitulo">Prioridad:
+                    </label>
                     <div class="col-sm-9">
-                        <select id="prioridad-tarea" class="form-select" >
+                        <select id="prioridad-tarea" class="form-select">
                             <option value="" selected disabled>Seleccione una prioridad</option>
                             <option value="alta">Alta</option>
                             <option value="media">Media</option>
@@ -75,7 +83,7 @@
             </div>
         </article>
     </section>
-    <section class="tablero-tareas row g-4">
+    <section class="tablero-tareas row">
         <article class="estado-tareas to-do col-12 col-md-4">
             <h3 class="titulo">TO DO</h3>
             <div class="lista-tareas">
@@ -85,18 +93,15 @@
                         <h5 class="card-title">Académica</h5>
                         <p class="card-text">Finalizar la 2da tarea del 1er Sprint-TaskPlanner Generation C13</p>
                         <p class="card-text">Entrega: 15/08/2026</p>
-                        <a href="#" class="btn btn-primary">Actualizar </a>
-                        <a href="#" class="btn btn-primary">Eliminar</a>
-                    </div>
-                </div>
-                <div class="card border-info mb-3 card-tarea" style="max-width: 18rem;">
-                    <div class="card-header">Trabajar Proy APOD</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Académica</h5>
-                        <p class="card-text">Proyecto de imágenes astronómicas</p>
-                        <p class="card-text">Entrega: 15/08/2026</p>
-                        <a href="#" class="btn btn-primary">Actualizar </a>
-                        <a href="#" class="btn btn-primary">Eliminar</a>
+                        <div class="text-center">
+                            <button class="btn btn-primary m-1">Editar</button>
+                            <button class="btn btn-primary m-1">Eliminar</button>
+                            <select class="form-select m-1 selector-estado" aria-label="Seleccion de estado en la tarea">
+                                <option selected disabled>Cambiar estado</option>
+                                <option value="in-progress">In progress</option>
+                                <option value="done">Done</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,51 +109,13 @@
         <article class="estado-tareas in-progress col-12 col-md-4">
             <h3 class="titulo">IN PROGRESS</h3>
             <div class="lista-tareas">
-                <div class="card border-info mb-3 card-tarea" style="max-width: 18rem;">
-                    <div class="card-header">Terminar Tarea 2 Sprint 1</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Académica</h5>
-                        <p class="card-text">Finalizar la 2da tarea del 1er Sprint-TaskPlanner Generation C13</p>
-                        <p class="card-text">Entrega: 15/08/2026</p>
-                        <a href="#" class="btn btn-primary">Actualizar </a>
-                        <a href="#" class="btn btn-primary">Eliminar</a>
-                    </div>
-                </div>
-                <div class="card border-info mb-3 card-tarea" style="max-width: 18rem;">
-                    <div class="card-header">Trabajar Proy APOD</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Académica</h5>
-                        <p class="card-text">Proyecto de imágenes astronómicas</p>
-                        <p class="card-text">Entrega: 15/08/2026</p>
-                        <a href="#" class="btn btn-primary">Actualizar </a>
-                        <a href="#" class="btn btn-primary">Eliminar</a>
-                    </div>
-                </div>
+                
             </div>
         </article>
         <article class="estado-tareas done col-12 col-md-4">
             <h3 class="titulo">DONE</h3>
             <div class="lista-tareas">
-                <div class="card border-info mb-3 card-tarea" style="max-width: 18rem;">
-                    <div class="card-header">Terminar Tarea 2 Sprint 1</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Académica</h5>
-                        <p class="card-text">Finalizar la 2da tarea del 1er Sprint-TaskPlanner Generation C13</p>
-                        <p class="card-text">Entrega: 15/08/2026</p>
-                        <a href="#" class="btn btn-primary">Actualizar </a>
-                        <a href="#" class="btn btn-primary">Eliminar</a>
-                    </div>
-                </div>
-                <div class="card border-info mb-3 card-tarea" style="max-width: 18rem;">
-                    <div class="card-header">Trabajar Proy APOD</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Académica</h5>
-                        <p class="card-text">Proyecto de imágenes astronómicas</p>
-                        <p class="card-text">Entrega: 15/08/2026</p>
-                        <a href="#" class="btn btn-primary">Actualizar </a>
-                        <a href="#" class="btn btn-primary">Eliminar</a>
-                    </div>
-                </div>
+                
             </div>
         </article>
     </section>
