@@ -17,8 +17,7 @@ const marcarCampo = (campo, esValido, mensaje) => {
     }
   };
 
-
-
+  
 const regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9\s]+$/;
 const validarNombre = () =>{
     const campo = document.getElementById('nombre-tarea');
