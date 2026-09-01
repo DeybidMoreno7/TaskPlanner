@@ -54,8 +54,7 @@
                     <label for="fecha-entrega-tarea" class="col-sm-3 col-form-label col-form-label-lg subtitulo">Fecha
                         Entrega: </label>
                     <div class="col-sm-9">
-                        <input type="date" class="form-control form-control-lg" id="fecha-entrega-tarea"
-                            placeholder="Clasifícala...">
+                        <input type="date" class="form-control form-control-lg" id="fecha-entrega-tarea">
                         <small class="mensaje-error" id="errorFecha-entrega-tarea" aria-live="polite"></small>
                     </div>
                 </div>
@@ -96,8 +95,10 @@
                         <div class="text-center">
                             <button class="btn btn-primary m-1">Editar</button>
                             <button class="btn btn-primary m-1">Eliminar</button>
-                            <select class="form-select m-1 selector-estado" aria-label="Seleccion de estado en la tarea">
+                            <select class="form-select m-1 selector-estado"
+                                aria-label="Seleccion de estado en la tarea">
                                 <option selected disabled>Cambiar estado</option>
+                                <option value="to-do">To do</option>
                                 <option value="in-progress">In progress</option>
                                 <option value="done">Done</option>
                             </select>
@@ -109,13 +110,13 @@
         <article class="estado-tareas in-progress col-12 col-md-4">
             <h3 class="titulo">IN PROGRESS</h3>
             <div class="lista-tareas">
-                
+
             </div>
         </article>
         <article class="estado-tareas done col-12 col-md-4">
             <h3 class="titulo">DONE</h3>
             <div class="lista-tareas">
-                
+
             </div>
         </article>
     </section>
