@@ -116,13 +116,10 @@ const taskManager = new TaskManager();
 
 
 const renderTasks = () => {
-
   document.querySelectorAll(".lista-tareas").forEach(lista => {
     lista.innerHTML = "";
   });
-
   taskManager.tasks.forEach(task => {
-
     const card = document.createElement("div");
     card.classList.add("card", "border-info", "mb-3", "card-tarea");
     card.dataset.id = task.id;
@@ -136,27 +133,22 @@ const renderTasks = () => {
                     ${task.description}
                     
                 </h5>
-
                 <p class="card-text">
                     ${task.category}
                 </p>
-
                 <p class="card-text">
                     Entrega: ${task.dueDate}
                 </p>
                 <p class="card-text">
                     Prioridad: ${task.priority}
                 </p>
-
                 <div class="text-center">
                     <button class="btn btn-primary m-1">
                         Editar
                     </button>
-
-                    <button class="btn btn-primary m-1">
+                    <button class="btn delete-button btn-danger m-1">
                         Eliminar
                     </button>
-
                     <select class="form-select m-1 selector-estado">
                         <option selected disabled>Cambiar estado</option>
                         <option value="to-do">To Do</option>
@@ -169,12 +161,7 @@ const renderTasks = () => {
     const listaDestino = document.querySelector(
       `.${task.status} .lista-tareas`
     );
-
     listaDestino.appendChild(card);
-
-
-
-
   });
 };
 
@@ -210,6 +197,25 @@ tablero.addEventListener("change", (event) => {
 
   listaDestino.appendChild(tarjeta);
 });
+
+tablero.addEventListener("click", (event) => {
+
+  if (!event.target.classList.contains("delete-button")) {
+    return;
+  }
+
+  const tarjeta = event.target.closest(".card-tarea");
+
+  const id = Number(tarjeta.dataset.id);
+
+  taskManager.deleteTask(id);
+
+  renderTasks();
+  console.log(taskManager.tasks);
+});
+
+
+
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();

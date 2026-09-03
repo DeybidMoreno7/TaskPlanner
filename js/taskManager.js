@@ -1,20 +1,29 @@
-class TaskManager{
-    constructor(currentID = 0){
+class TaskManager {
+    constructor(currentID = 0) {
         this.tasks = [];
         this.currentID = currentID;
     }
-    addTask(name, description, category, dueDate, priority){
+    addTask(name, description, category, dueDate, priority) {
         this.currentID++;
 
         this.tasks.push({
-        id: this.currentID,
-        name: name,
-        description: description,
-        category: category,
-        dueDate: dueDate,
-        priority: priority,
-        status: 'to-do'
-    });
+            id: this.currentID,
+            name: name,
+            description: description,
+            category: category,
+            dueDate: dueDate,
+            priority: priority,
+            status: 'to-do'
+        });
     }
-    
+    deleteTask(taskId){
+        const newTasks=[];
+        for(let task of this.tasks){
+            if(task.id !== taskId){
+                newTasks.push(task);
+            }
+        }
+        this.tasks = newTasks;
+    }
+
 }
