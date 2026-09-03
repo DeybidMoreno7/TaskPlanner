@@ -13,7 +13,7 @@ class TaskManager{
         category: category,
         dueDate: dueDate,
         priority: priority,
-        status: 'To Do'
+        status: 'to-do'
     });
     }
     

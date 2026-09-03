@@ -113,33 +113,105 @@ prioridad_tarea.addEventListener('blur', validarPrioridad);
 
 
 const taskManager = new TaskManager();
-// taskManager.addTask(
-//   'Sprint 2',
-//   'Terminar Sprint 2',
-//   '2026-09-01',  
-// );
-// taskManager.addTask(
-//   'Sprint 3',
-//   'Terminar Sprint 3',
-//   '2026-09-01',  
-// );
 
 
-const selectEstado = document.querySelectorAll(".selector-estado");
-console.log(selectEstado);
-selectEstado.forEach(select => {
-    select.addEventListener("change", (event) => {
-        const tarjeta = event.target.closest(".card-tarea");
-        const nuevoEstado = event.target.value;
-        const listaDestino = document.querySelector(
-            `.${nuevoEstado} .lista-tareas`
-        );
-        listaDestino.appendChild(tarjeta);
-        event.target.value = nuevoEstado;
-    });
+const renderTasks = () => {
+
+  document.querySelectorAll(".lista-tareas").forEach(lista => {
+    lista.innerHTML = "";
+  });
+
+  taskManager.tasks.forEach(task => {
+
+    const card = document.createElement("div");
+    card.classList.add("card", "border-info", "mb-3", "card-tarea");
+    card.dataset.id = task.id;
+    card.innerHTML = `
+            <div class="card-header">
+                ${task.name.toUpperCase()}
+            </div>
+
+            <div class="card-body">
+                <h5 class="card-title">
+                    ${task.description}
+                    
+                </h5>
+
+                <p class="card-text">
+                    ${task.category}
+                </p>
+
+                <p class="card-text">
+                    Entrega: ${task.dueDate}
+                </p>
+                <p class="card-text">
+                    Prioridad: ${task.priority}
+                </p>
+
+                <div class="text-center">
+                    <button class="btn btn-primary m-1">
+                        Editar
+                    </button>
+
+                    <button class="btn btn-primary m-1">
+                        Eliminar
+                    </button>
+
+                    <select class="form-select m-1 selector-estado">
+                        <option selected disabled>Cambiar estado</option>
+                        <option value="to-do">To Do</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="done">Done</option>
+                    </select>
+                </div>
+            </div>
+        `;
+    const listaDestino = document.querySelector(
+      `.${task.status} .lista-tareas`
+    );
+
+    listaDestino.appendChild(card);
+
+
+
+
+  });
+};
+
+
+
+
+
+
+const tablero = document.querySelector(".tablero-tareas");
+
+tablero.addEventListener("change", (event) => {
+
+  if (!event.target.classList.contains("selector-estado")) {
+    return;
+  }
+
+  const tarjeta = event.target.closest(".card-tarea");
+  const nuevoEstado = event.target.value;
+
+  // 1. Obtener el ID de la tarea
+  const id = Number(tarjeta.dataset.id);
+
+  // 2. Buscar esa tarea dentro del array
+  const task = taskManager.tasks.find(task => task.id === id);
+
+  // 3. Actualizar su estado
+  task.status = nuevoEstado;
+
+
+  const listaDestino = document.querySelector(
+    `.${nuevoEstado} .lista-tareas`
+  );
+
+  listaDestino.appendChild(tarjeta);
 });
 
-form.addEventListener('submit',function(e){
+form.addEventListener('submit', function (e) {
   e.preventDefault();
   const nombreValido = validarNombre();
   const descripcionValida = validarDescripcion();
@@ -162,7 +234,8 @@ form.addEventListener('submit',function(e){
     categoria_tarea.value,
     fecha_entrega_tarea.value,
     prioridad_tarea.value
-  );  
+  );
+  renderTasks();
   form.reset()
   console.log(taskManager.tasks);
 });
