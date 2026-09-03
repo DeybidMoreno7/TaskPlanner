@@ -164,5 +164,5 @@ form.addEventListener('submit',function(e){
     prioridad_tarea.value
   );  
   form.reset()
-  console.log(taskManager.tasks);
+  console.log(taskManager.tasks)
 });
