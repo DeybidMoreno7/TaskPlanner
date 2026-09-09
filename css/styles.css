@@ -1,53 +1,152 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Courier New', Courier, monospace;
 }
 
-body{
+body {
     min-height: 100vh;
     padding: 2rem;
-}
-.titulo{
-    font-weight: bolder;
-}
-.subtitulo{
-    font-weight: bold;
-}
-.contenedor-form-cale article{
-    border: 1px solid #000;
-    border-radius: 10px;
+
+    color: #f5f3ff;
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(123, 63, 242, 0.35), transparent 25%),
+        radial-gradient(circle at 85% 15%, rgba(0, 217, 255, 0.25), transparent 25%),
+        radial-gradient(circle at 50% 85%, rgba(255, 0, 153, 0.18), transparent 30%),
+        linear-gradient(135deg, #050816, #0b1026 45%, #120822);
+    
+    background-attachment: fixed;
 }
 
-#formulario{
+/* ESTRELLAS */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(circle, white 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,.7) 1px, transparent 1px);
+
+    background-size: 90px 90px, 140px 140px;
+    background-position: 10px 20px, 50px 70px;
+
+    opacity: 0.35;
+    z-index: -1;
+}
+
+/* TITULOS */
+
+.titulo {
+    font-weight: bolder;
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 5px rgba(255,255,255,.8),
+        0 0 15px rgba(115, 89, 255, .8),
+        0 0 30px rgba(115, 89, 255, .5);
+}
+
+.subtitulo {
+    font-weight: bold;
+}
+
+/* FORMULARIO Y CALENDARIO */
+
+.contenedor-form-cale article {
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.06);
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 0 30px rgba(108, 92, 231, .15),
+        inset 0 0 20px rgba(255,255,255,.03);
+}
+
+#formulario {
     padding: 3.5rem;
 }
-.mensaje-error{
+
+/* INPUTS */
+
+.form-control,
+.form-select {
+    background-color: rgba(255,255,255,.08);
+    color: white;
+
+    border: 1px solid rgba(255,255,255,.25);
+}
+
+.form-control::placeholder {
+    color: rgba(255,255,255,.5);
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: rgba(255,255,255,.1);
+    color: white;
+
+    border-color: #8b7cff;
+
+    box-shadow:
+        0 0 0 0.2rem rgba(108,92,231,.2),
+        0 0 20px rgba(108,92,231,.35);
+}
+
+.form-select option {
+    background-color: #11152d;
+    color: white;
+}
+
+/* MENSAJES DE ERROR */
+
+.mensaje-error {
     display: block;
-    justify-content: flex-start;
     min-height: 1.15rem;
-    margin-top: 0.25rem;
-    color: #b42318;
-    font-size: 0.95rem;
+    margin-top: .25rem;
+
+    color: #ff6b81;
+    font-size: .95rem;
 }
+
 .campo-error {
-  border-color: #b42318;
-  color: #b42318;
-  box-shadow: 0 0 0 0.2rem rgba(180, 35, 24, 0.12);
+    border-color: #ff4d6d;
+
+    box-shadow:
+        0 0 0 0.2rem rgba(255,77,109,.12),
+        0 0 15px rgba(255,77,109,.25);
 }
+
 .campo-valido {
-  border-color: #5bbe49;
+    border-color: #5cff95;
+
+    box-shadow:
+        0 0 10px rgba(92,255,149,.2);
 }
+
+/* BOTÓN REGISTRAR */
+
 #btnAgregar {
     display: block;
     margin: 1.5rem auto 0;
-    padding: 0.8rem 2.5rem;
-    
+
+    padding: .8rem 2.5rem;
+
     border: none;
     border-radius: 12px;
 
-    background: linear-gradient(135deg, #6c5ce7, #00b894);
+    background: linear-gradient(
+        135deg,
+        #6c5ce7,
+        #00b894
+    );
+
     color: white;
 
     font-size: 1.1rem;
@@ -55,37 +154,171 @@ body{
     letter-spacing: 1px;
 
     cursor: pointer;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow:
+        0 0 15px rgba(108,92,231,.5),
+        0 6px 20px rgba(0,0,0,.3);
+
+    transition: .25s ease;
 }
 
 #btnAgregar:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow:
+        0 0 25px rgba(108,92,231,.8),
+        0 10px 30px rgba(0,0,0,.4);
 }
 
 #btnAgregar:active {
-    transform: translateY(0);
+    transform: scale(.98);
 }
 
-.estado-tareas{
+/* TABLERO */
+
+.estado-tareas {
     min-height: 500px;
-    border: 1px solid #000; 
-    border-radius: 10px;
+
+    margin-top: 2rem;
+
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 20px;
+
     padding-top: 2rem;
+
+    background: rgba(255,255,255,.045);
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 0 25px rgba(0,0,0,.25),
+        inset 0 0 20px rgba(255,255,255,.025);
+
+    transition: .3s ease;
 }
 
-.estado-tareas h3{
+.estado-tareas:hover {
+    box-shadow:
+        0 0 35px rgba(108,92,231,.2),
+        inset 0 0 25px rgba(255,255,255,.04);
+}
+
+.estado-tareas h3 {
     text-align: center;
     padding-top: 1rem;
+
+    letter-spacing: 3px;
 }
 
-.lista-tareas{
+/* LISTA */
+
+.lista-tareas {
     display: flex;
     flex-direction: column;
+
+    gap: 1rem;
+
+    padding: 1rem;
 }
 
-.card-tarea{
+/* CARDS */
+
+.card-tarea {
     margin: 0 auto;
+
+    width: 95%;
+
+    border: 1px solid rgba(255,255,255,.2) !important;
+    border-radius: 15px !important;
+
+    background: rgba(255,255,255,.08) !important;
+    color: white !important;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.3),
+        0 0 15px rgba(108,92,231,.12);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
 }
+
+.card-tarea:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 10px 30px rgba(108,92,231,.3),
+        0 0 20px rgba(0,217,255,.15);
+}
+
+.card-tarea .card-header {
+    background: rgba(108,92,231,.25);
+
+    border-bottom: 1px solid rgba(255,255,255,.15);
+
+    color: white;
+
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.card-tarea .card-title {
+    color: #c9c2ff;
+}
+
+.card-tarea .card-text {
+    color: rgba(255,255,255,.8);
+}
+
+/* BOTONES DE LAS CARDS */
+
+.card-tarea .btn {
+    border: none;
+
+    transition: .2s ease;
+}
+
+.card-tarea .btn:hover {
+    transform: scale(1.05);
+
+    box-shadow: 0 0 12px rgba(255,255,255,.25);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    body {
+        padding: 1rem;
+    }
+
+    #formulario {
+        padding: 2rem 1rem;
+    }
+
+    #formulario .row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #formulario .row label,
+    #formulario .row > div {
+        width: 100%;
+    }
+
+    #formulario .row label {
+        text-align: left;
+        padding-bottom: 0.5rem;
+    }
+
+    .estado-tareas {
+        min-height: 300px;
+    }
+
+    .card-tarea {
+        width: 100%;
+    }
+}
+
+

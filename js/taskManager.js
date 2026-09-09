@@ -16,14 +16,24 @@ class TaskManager {
             status: 'to-do'
         });
     }
-    deleteTask(taskId){
-        const newTasks=[];
-        for(let task of this.tasks){
-            if(task.id !== taskId){
+    deleteTask(taskId) {
+        const newTasks = [];
+        for (let task of this.tasks) {
+            if (task.id !== taskId) {
                 newTasks.push(task);
             }
         }
         this.tasks = newTasks;
+    }
+    getTaskById(taskId) {
+        let foundTask;
+
+        for (let task of this.tasks) {
+            if (task.id === taskId) {
+                foundTask = task;
+            }
+        }
+        return foundTask;
     }
 
 }
