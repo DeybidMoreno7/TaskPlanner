@@ -117,24 +117,24 @@ const taskManager = new TaskManager();
 
 const renderTasks = () => {
 
-    document.querySelectorAll(".lista-tareas").forEach(lista => {
-        lista.innerHTML = "";
-    });
+  document.querySelectorAll(".lista-tareas").forEach(lista => {
+    lista.innerHTML = "";
+  });
 
-    taskManager.tasks.forEach(task => {
+  taskManager.tasks.forEach(task => {
 
-        const card = document.createElement("div");
+    const card = document.createElement("div");
 
-        card.classList.add(
-            "card",
-            "border-info",
-            "mb-3",
-            "card-tarea"
-        );
+    card.classList.add(
+      "card",
+      "border-info",
+      "mb-3",
+      "card-tarea"
+    );
 
-        card.dataset.taskId = task.id;
+    card.dataset.taskId = task.id;
 
-        card.innerHTML = `
+    card.innerHTML = `
             <div class="card-header">
                 ${task.name.toUpperCase()}
             </div>
@@ -174,16 +174,16 @@ const renderTasks = () => {
                         </option>
 
                         ${task.status !== "to-do"
-                            ? '<option value="to-do">To Do</option>'
-                            : ''}
+        ? '<option value="to-do">To Do</option>'
+        : ''}
 
                         ${task.status !== "in-progress"
-                            ? '<option value="in-progress">In Progress</option>'
-                            : ''}
+        ? '<option value="in-progress">In Progress</option>'
+        : ''}
 
                         ${task.status !== "done"
-                            ? '<option value="done">Done</option>'
-                            : ''}
+        ? '<option value="done">Done</option>'
+        : ''}
 
                     </select>
 
@@ -191,12 +191,12 @@ const renderTasks = () => {
             </div>
         `;
 
-        const listaDestino = document.querySelector(
-            `.${task.status} .lista-tareas`
-        );
+    const listaDestino = document.querySelector(
+      `.${task.status} .lista-tareas`
+    );
 
-        listaDestino.appendChild(card);
-    });
+    listaDestino.appendChild(card);
+  });
 };
 
 
@@ -208,45 +208,46 @@ const tablero = document.querySelector(".tablero-tareas");
 
 tablero.addEventListener("change", (event) => {
 
-    if (!event.target.classList.contains("selector-estado")) {
-        return;
-    }
+  if (!event.target.classList.contains("selector-estado")) {
+    return;
+  }
 
-    const tarjeta = event.target.closest(".card-tarea");
+  const tarjeta = event.target.closest(".card-tarea");
 
-    const id = Number(tarjeta.dataset.taskId);
+  const id = Number(tarjeta.dataset.taskId);
 
-    const nuevoEstado = event.target.value;
+  const nuevoEstado = event.target.value;
 
-    console.log("ID:", id);
-    console.log("Nuevo estado:", nuevoEstado);
+  console.log("ID:", id);
+  console.log("Nuevo estado:", nuevoEstado);
 
-    const task = taskManager.getTaskById(id);
+  const task = taskManager.getTaskById(id);
 
-    console.log("Tarea encontrada:", task);
+  console.log("Tarea encontrada:", task);
 
-    task.status = nuevoEstado;
+  task.status = nuevoEstado;
 
-    console.log("Tarea actualizada:", task);
+  console.log("Tarea actualizada:", task);
+  console.log(task.status);
 
-    renderTasks();
+  renderTasks();
 });
 
 
-tablero.addEventListener("click", (event) => {
+// tablero.addEventListener("click", (event) => {
 
-    if (!event.target.classList.contains("delete-button")) {
-        return;
-    }
+//   if (!event.target.classList.contains("delete-button")) {
+//     return;
+//   }
 
-    const tarjeta = event.target.closest(".card-tarea");
+//   const tarjeta = event.target.closest(".card-tarea");
 
-    const id = Number(tarjeta.dataset.taskId);
+//   const id = Number(tarjeta.dataset.taskId);
 
-    taskManager.deleteTask(id);
+//   taskManager.deleteTask(id);
 
-    renderTasks();
-});
+//   renderTasks();
+// });
 
 tablero.addEventListener("click", (event) => {
 
