@@ -16,6 +16,7 @@ class TaskManager {
             status: 'to-do'
         });
     }
+    //esto es una prueba
     deleteTask(taskId) {
         const newTasks = [];
         for (let task of this.tasks) {
