@@ -113,10 +113,11 @@ prioridad_tarea.addEventListener('blur', validarPrioridad);
 
 
 const taskManager = new TaskManager();
-
+  taskManager.load();  
+// taskManager.load();
 
 const renderTasks = () => {
-
+  
   document.querySelectorAll(".lista-tareas").forEach(lista => {
     lista.innerHTML = "";
   });
@@ -291,7 +292,7 @@ form.addEventListener('submit', function (e) {
     categoria_tarea.value,
     fecha_entrega_tarea.value,
     prioridad_tarea.value
-  );
+  );   
   renderTasks();
   form.reset()
   console.log(taskManager.tasks);
