@@ -113,29 +113,26 @@ prioridad_tarea.addEventListener('blur', validarPrioridad);
 
 
 const taskManager = new TaskManager();
-  taskManager.load();  
-// taskManager.load();
-
 const renderTasks = () => {
-  
-  document.querySelectorAll(".lista-tareas").forEach(lista => {
-    lista.innerHTML = "";
-  });
 
-  taskManager.tasks.forEach(task => {
+    document.querySelectorAll(".lista-tareas").forEach(lista => {
+        lista.innerHTML = "";
+    });
 
-    const card = document.createElement("div");
+    taskManager.tasks.forEach(task => {
 
-    card.classList.add(
-      "card",
-      "border-info",
-      "mb-3",
-      "card-tarea"
-    );
+        const card = document.createElement("div");
 
-    card.dataset.taskId = task.id;
+        card.classList.add(
+            "card",
+            "border-info",
+            "mb-3",
+            "card-tarea"
+        );
 
-    card.innerHTML = `
+        card.dataset.taskId = task.id;
+
+        card.innerHTML = `
             <div class="card-header">
                 ${task.name.toUpperCase()}
             </div>
@@ -175,16 +172,16 @@ const renderTasks = () => {
                         </option>
 
                         ${task.status !== "to-do"
-        ? '<option value="to-do">To Do</option>'
-        : ''}
+                            ? '<option value="to-do">To Do</option>'
+                            : ''}
 
                         ${task.status !== "in-progress"
-        ? '<option value="in-progress">In Progress</option>'
-        : ''}
+                            ? '<option value="in-progress">In Progress</option>'
+                            : ''}
 
                         ${task.status !== "done"
-        ? '<option value="done">Done</option>'
-        : ''}
+                            ? '<option value="done">Done</option>'
+                            : ''}
 
                     </select>
 
@@ -192,62 +189,57 @@ const renderTasks = () => {
             </div>
         `;
 
-    const listaDestino = document.querySelector(
-      `.${task.status} .lista-tareas`
-    );
+        const listaDestino = document.querySelector(
+            `.${task.status} .lista-tareas`
+        );
 
-    listaDestino.appendChild(card);
-  });
+        listaDestino.appendChild(card);
+    });
 };
-
-
-
-
-
-
+taskManager.load();
+renderTasks();
 const tablero = document.querySelector(".tablero-tareas");
 
 tablero.addEventListener("change", (event) => {
 
-  if (!event.target.classList.contains("selector-estado")) {
-    return;
-  }
+    if (!event.target.classList.contains("selector-estado")) {
+        return;
+    }
 
-  const tarjeta = event.target.closest(".card-tarea");
+    const tarjeta = event.target.closest(".card-tarea");
 
-  const id = Number(tarjeta.dataset.taskId);
+    const id = Number(tarjeta.dataset.taskId);
 
-  const nuevoEstado = event.target.value;
+    const nuevoEstado = event.target.value;
 
-  console.log("ID:", id);
-  console.log("Nuevo estado:", nuevoEstado);
+    console.log("ID:", id);
+    console.log("Nuevo estado:", nuevoEstado);
 
-  const task = taskManager.getTaskById(id);
+    const task = taskManager.getTaskById(id);
 
-  console.log("Tarea encontrada:", task);
+    console.log("Tarea encontrada:", task);
 
-  task.status = nuevoEstado;
+    task.status = nuevoEstado;
+    taskManager.save();
+    console.log("Tarea actualizada:", task);
 
-  console.log("Tarea actualizada:", task);
-  console.log(task.status);
-
-  renderTasks();
+    renderTasks();
 });
 
 
 // tablero.addEventListener("click", (event) => {
 
-//   if (!event.target.classList.contains("delete-button")) {
-//     return;
-//   }
+//     if (!event.target.classList.contains("delete-button")) {
+//         return;
+//     }
 
-//   const tarjeta = event.target.closest(".card-tarea");
+//     const tarjeta = event.target.closest(".card-tarea");
 
-//   const id = Number(tarjeta.dataset.taskId);
+//     const id = Number(tarjeta.dataset.taskId);
 
-//   taskManager.deleteTask(id);
-
-//   renderTasks();
+//     taskManager.deleteTask(id);
+    
+//     renderTasks();
 // });
 
 tablero.addEventListener("click", (event) => {
@@ -261,13 +253,10 @@ tablero.addEventListener("click", (event) => {
   const id = Number(tarjeta.dataset.taskId);
 
   taskManager.deleteTask(id);
-
+  taskManager.save();
   renderTasks();
   console.log(taskManager.tasks);
 });
-
-
-
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -292,7 +281,8 @@ form.addEventListener('submit', function (e) {
     categoria_tarea.value,
     fecha_entrega_tarea.value,
     prioridad_tarea.value
-  );   
+  );
+  taskManager.save();
   renderTasks();
   form.reset()
   console.log(taskManager.tasks);
